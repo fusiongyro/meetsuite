@@ -1,17 +1,5 @@
 <?php
 
-class ReservationState extends SplEnum
-{
-    const __default = ReservationState::UNSUBMITTED;
-    const UNSUBMITTED       = "UNSUBMITTED";
-    const AWAITING_APPROVAL = "AWAITING_APPROVAL";
-    const ACCEPTED          = "ACCEPTED";
-    const COMPLETE          = "COMPLETE";
-    const CANCELED          = "CANCELED";
-    const DENIED            = "DENIED";
-    const EXPIRED           = "EXPIRED";
-}
-
 class Reservation
 {
     private $state = ReservationState::UNSUBMITTED;
@@ -88,52 +76,5 @@ class Reservation
     public function getOccurrences()
     {
 
-    }
-}
-
-class Repository
-{
-    public function saveReservation($reservation)
-    {
-        query("INSERT INTO reservations () ...");
-    }
-
-    public function saveOccurrences($occurences)
-    {
-        query("INSERT INTO occurrences () ...");
-    }
-}
-
-class OccurrenceState extends SplEnum
-{
-    const __default   = ReservationState::PENDING;
-    const PENDING     = "PENDING";
-    const IN_PROGRESS = "IN_PROGRESS";
-    const COMPLETE    = "COMPLETE";
-}
-
-class Occurrence
-{
-    private $state = OccurrenceState::PENDING;
-
-    public function canTransitionTo($anotherState)
-    {
-        switch ($this->state) {
-            case OccurrenceState::PENDING:
-                return $anotherState == OccurrenceState::IN_PROGRESS;
-
-            case ReservationState::IN_PROGRESS:
-                return $anotherState == OccurrenceState::COMPLETE;
-        }
-
-        return false;
-    }
-
-    public function transitionTo($anotherState)
-    {
-        if ($this->canTransitionTo($anotherState))
-            $this->state = $anotherState;
-        else
-            throw new InvalidArgumentException("Can't transition from {$this->state} to $anotherState");
     }
 }
