@@ -11,4 +11,14 @@ class Repository
     {
         query("INSERT INTO occurrences () ...");
     }
+
+    public function saveRoom($room)
+    {
+
+    }
+
+    public function saveContact($contact)
+    {
+
+    }
 }
