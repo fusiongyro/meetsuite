@@ -1,6 +1,6 @@
 <?php
 
-class OccurrenceState extends SplEnum
+abstract class OccurrenceState
 {
     const __default   = ReservationState::PENDING;
     const PENDING     = "PENDING";

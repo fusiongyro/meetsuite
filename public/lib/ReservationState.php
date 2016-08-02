@@ -1,6 +1,6 @@
 <?php
 
-class ReservationState extends SplEnum
+abstract class ReservationState
 {
     const __default = ReservationState::UNSUBMITTED;
     const UNSUBMITTED       = "UNSUBMITTED";
